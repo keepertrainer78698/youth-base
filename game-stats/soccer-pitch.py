@@ -10,11 +10,11 @@ fig.set_size_inches(7, 5)
 ax=fig.add_subplot(1,1,1)
 
 # Squares
-plt.plot([5,5], [0,50], color="grey")
+#plt.plot([5,5], [0,50], color="grey")
 plt.plot([10,10], [0,50], color="grey")
-plt.plot([15,15], [0,50], color="grey")
+#plt.plot([15,15], [0,50], color="grey")
 plt.plot([20,20], [0,50], color="grey")
-plt.plot([25,25], [0,50], color="grey")
+#plt.plot([25,25], [0,50], color="grey")
 plt.plot([30,30], [0,50], color="grey")
 
 plt.plot([0,90], [5,5], color="grey")
