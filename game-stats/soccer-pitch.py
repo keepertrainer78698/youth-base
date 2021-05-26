@@ -6,21 +6,68 @@ from matplotlib.patches import Arc
 
 # Create figure
 fig=plt.figure()
-fig.set_size_inches(7, 5)
+fig.set_size_inches(16, 9)
 ax=fig.add_subplot(1,1,1)
 
 # Squares
-#plt.plot([5,5], [0,50], color="grey")
-plt.plot([10,10], [0,50], color="grey")
-#plt.plot([15,15], [0,50], color="grey")
-plt.plot([20,20], [0,50], color="grey")
-#plt.plot([25,25], [0,50], color="grey")
-plt.plot([30,30], [0,50], color="grey")
+plt.plot([5,5], [0,50], color="grey") # 1
+plt.plot([10,10], [0,50], color="grey") # 2
+plt.plot([15,15], [0,50], color="grey") # 3
+plt.plot([20,20], [0,50], color="grey") # 4
+plt.plot([25,25], [0,50], color="grey") # 5
+plt.plot([30,30], [0,50], color="grey") # 6
+plt.plot([35,35], [0,50], color="grey") # 7
+plt.plot([40,40], [0,50], color="grey") # 8
+plt.plot([45,45], [0,50], color="grey") # 9
+plt.plot([50,50], [0,50], color="grey") # 10
+plt.plot([55,55], [0,50], color="grey") # 11
+plt.plot([60,60], [0,50], color="grey") # 12
+plt.plot([65,65], [0,50], color="grey") # 13
+plt.plot([70,70], [0,50], color="grey") # 14
+plt.plot([75,75], [0,50], color="grey") # 15
+plt.plot([80,80], [0,50], color="grey") # 16
+plt.plot([85,85], [0,50], color="grey") # 17
 
-plt.plot([0,90], [5,5], color="grey")
-plt.plot([0,90], [10,10], color="grey")
-plt.plot([0,90], [15,15], color="grey")
-plt.plot([0,90], [20,20], color="grey")
+plt.plot([0,90], [5,5], color="grey") # A
+plt.plot([0,90], [10,10], color="grey") # B
+plt.plot([0,90], [15,15], color="grey") # C
+plt.plot([0,90], [20,20], color="grey") # D
+plt.plot([0,90], [25,25], color="grey") # E
+plt.plot([0,90], [30,30], color="grey") # F
+plt.plot([0,90], [35,35], color="grey") # G
+plt.plot([0,90], [40,40], color="grey") # H
+plt.plot([0,90], [45,45], color="grey") # I
+
+plt.text(2, -2, '1')
+plt.text(7, -2, '2')
+plt.text(12, -2, '3')
+plt.text(17, -2, '4')
+plt.text(22, -2, '5')
+plt.text(27, -2, '6')
+plt.text(32, -2, '7')
+plt.text(37, -2, '8')
+plt.text(42, -2, '9')
+plt.text(46, -2, '10')
+plt.text(51, -2, '11')
+plt.text(56, -2, '12')
+plt.text(61, -2, '13')
+plt.text(66, -2, '14')
+plt.text(71, -2, '15')
+plt.text(76, -2, '16')
+plt.text(81, -2, '17')
+plt.text(86, -2, '18')
+
+plt.text(-3, 2, 'A')
+plt.text(-3, 7, 'B')
+plt.text(-3, 12, 'C')
+plt.text(-3, 17, 'D')
+plt.text(-3, 22, 'E')
+plt.text(-3, 27, 'F')
+plt.text(-3, 32, 'G')
+plt.text(-3, 37, 'H')
+plt.text(-3, 42, 'I')
+plt.text(-3, 47, 'J')
+
 
 # Pitch Outline & Centre Line
 plt.plot([0,0],[0,50], color="black")
@@ -43,51 +90,8 @@ PenSpot = plt.Circle((45,11),0.5,color="black")
 ax.add_patch(PenSpot)
 
 # Penalty Arc
-Arc = Arc((45,11),height=18.3,width=18.3,angle=90,theta1=310,theta2=50,color="black")
-ax.add_patch(Arc)
-
-
-
-
-# #Left Penalty Area
-# plt.plot([16.5,16.5],[65,25],color="black")
-# plt.plot([0,16.5],[65,65],color="black")
-# plt.plot([16.5,0],[25,25],color="black")
-
-# #Right Penalty Area
-# plt.plot([130,113.5],[65,65],color="black")
-# plt.plot([113.5,113.5],[65,25],color="black")
-# plt.plot([113.5,130],[25,25],color="black")
-
-# #Left 6-yard Box
-# plt.plot([0,5.5],[54,54],color="black")
-# plt.plot([5.5,5.5],[54,36],color="black")
-# plt.plot([5.5,0.5],[36,36],color="black")
-
-# #Right 6-yard Box
-# plt.plot([130,124.5],[54,54],color="black")
-# plt.plot([124.5,124.5],[54,36],color="black")
-# plt.plot([124.5,130],[36,36],color="black")
-
-# #Prepare Circles
-# centreCircle = plt.Circle((65,45),9.15,color="black",fill=False)
-# centreSpot = plt.Circle((65,45),0.8,color="black")
-# leftPenSpot = plt.Circle((11,45),0.8,color="black")
-# rightPenSpot = plt.Circle((119,45),0.8,color="black")
-
-# #Draw Circles
-# ax.add_patch(centreCircle)
-# ax.add_patch(centreSpot)
-# ax.add_patch(leftPenSpot)
-# ax.add_patch(rightPenSpot)
-
-# #Prepare Arcs
-# leftArc = Arc((11,45),height=18.3,width=18.3,angle=0,theta1=310,theta2=50,color="black")
-# rightArc = Arc((119,45),height=18.3,width=18.3,angle=0,theta1=130,theta2=230,color="black")
-
-# #Draw Arcs
-# ax.add_patch(leftArc)
-# ax.add_patch(rightArc)
+penalty_arc = Arc((45,10.5),height=18.3,width=18.3,angle=90,theta1=310,theta2=50,color="black")
+ax.add_patch(penalty_arc)
 
 #Tidy Axes
 plt.axis('off')
