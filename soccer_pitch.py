@@ -4,42 +4,90 @@ import matplotlib.pyplot as plt
 from matplotlib.patches import Arc
 
 
-
-def full_pitch():
-    # Create figure
+def full_pitch(background, line, provider):
+     # Create figure
     fig=plt.figure()
     fig.set_size_inches(16, 9)
-    ax=fig.add_subplot(1,1,1)
+    ax = fig.add_subplot(1,1,1)
+
+     # Set color Scheme
+    line_color = line
+    fig.set_facecolor(background)
+
+    # Set dimensions Instat
+    if provider == "Instat":
+        length = 105
+        width = 68
+        pen_area_x = 16.5
+        pen_area_y = 13.85
+        pen_area_y2 = 54.15
+        six_yard_x = 5.5
+        six_yard_y = 24.85
+        six_yard_y2 = 43.15
+        penalty_spot = [11,34]
+    else:
+        length = 120
+        width = 80
+        pen_area_x = 18
+        pen_area_y = 18
+        pen_area_y2 = 62
+        six_yard_x = 6
+        six_yard_y = 30
+        six_yard_y2 = 50
+        penalty_spot = [12,40]
+
 
     # Pitch Outline & Centre Line
-    plt.plot([0,0],[0,100], color="black")
-    plt.plot([0,100],[100,100], color="black")
-    plt.plot([100,100],[100,0], color="black")
-    plt.plot([100,0],[0,0], color="black")
+    plt.plot([0,0],[0,width], color=line_color)
+    plt.plot([0,length],[width,width], color=line_color)
+    plt.plot([length,length],[width,0], color=line_color)
+    plt.plot([length,0],[0,0], color=line_color)
+    plt.plot([length / 2, length / 2], [0, width], color=line_color)
 
-    # Penalty Area 1
-    plt.plot([81,19],[16,16], color="black")
-    plt.plot([19,19],[0,16], color="black")
-    plt.plot([81,81],[16,0], color="black")
+    # Left Penalty Area
+    plt.plot([0,pen_area_x], [pen_area_y, pen_area_y], color=line_color)
+    plt.plot([0,pen_area_x], [pen_area_y2,pen_area_y2], color=line_color)
+    plt.plot([pen_area_x,pen_area_x], [pen_area_y,pen_area_y2], color=line_color)
 
-    # 6-yard Box
-    plt.plot([63,37],[6,6], color="black")
-    plt.plot([37,37],[0,6], color="black")
-    plt.plot([63,63],[6,0], color="black")
+    # Left 6-yard Box
+    plt.plot([0,six_yard_x], [six_yard_y, six_yard_y], color=line_color)
+    plt.plot([0,six_yard_x], [six_yard_y2,six_yard_y2], color=line_color)
+    plt.plot([six_yard_x,six_yard_x], [six_yard_y,six_yard_y2], color=line_color)
 
-    # Penalty Spot
-    PenSpot = plt.Circle((50,10),0.5,color="black")
+    # Left Penalty Spot
+    PenSpot = plt.Circle(penalty_spot,0.5, color=line_color)
     ax.add_patch(PenSpot)
 
-    # Penalty Arc
-    penalty_arc = Arc((50,10.5),height=18.3,width=18.3,angle=90,theta1=310,theta2=50,color="black")
+    # Left Penalty Arc
+    penalty_arc = Arc(penalty_spot,height=18.3,width=18.3,angle=360,theta1=307,theta2=53, color=line_color)
     ax.add_patch(penalty_arc)
 
+     # Right Penalty Area
+    plt.plot([length,length - pen_area_x], [width - pen_area_y, width - pen_area_y], color=line_color)
+    plt.plot([length, length - pen_area_x], [width - pen_area_y2, width - pen_area_y2], color=line_color)
+    plt.plot([length - pen_area_x, length - pen_area_x], [width - pen_area_y, width - pen_area_y2], color=line_color)
+
+    # Right 6-yard Box
+    plt.plot([length, length - six_yard_x], [width - six_yard_y, width - six_yard_y], color=line_color)
+    plt.plot([length, length - six_yard_x], [width - six_yard_y2, width - six_yard_y2], color=line_color)
+    plt.plot([length - six_yard_x, length - six_yard_x], [width - six_yard_y, width - six_yard_y2], color=line_color)
+
+    # Right Penalty Spot
+    PenSpot = plt.Circle((length-penalty_spot[0], penalty_spot[1]),0.5, color=line_color)
+    ax.add_patch(PenSpot)
+
+    # Right Penalty Arc
+    penalty_arc = Arc((length-penalty_spot[0], penalty_spot[1]),height=18.3,width=18.3,angle=180,theta1=307,theta2=53, color=line_color)
+    ax.add_patch(penalty_arc)
+
+    #Prepare Circles
+    centreCircle = plt.Circle((length/2, width/2),9.15,color=line_color, fill=False)
+    centreSpot = plt.Circle((length/2, width/2),0.8,color=line_color)
+    ax.add_patch(centreCircle)
+    ax.add_patch(centreSpot)
+ 
     #Tidy Axes
     plt.axis('off')
-
-    #Display Pitch
-    plt.show()
 
 
 def half_pitch():
