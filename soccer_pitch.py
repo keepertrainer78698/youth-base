@@ -5,10 +5,11 @@ from matplotlib.patches import Arc
 
 
 def full_pitch(background, line, provider):
-     # Create figure
+    #  # Create figure
     fig=plt.figure()
-    fig.set_size_inches(16, 9)
+    # fig.set_size_inches(16, 9)
     ax = fig.add_subplot(1,1,1)
+    # ax = plt.gca()
 
      # Set color Scheme
     line_color = line
@@ -88,9 +89,75 @@ def full_pitch(background, line, provider):
  
     #Tidy Axes
     plt.axis('off')
+    ax.set(xlim=(0,length), ylim=(0,width))
 
 
-def half_pitch():
+def half_pitch(background, line, provider):
+     # Create figure
+    fig=plt.figure()
+    ax = fig.add_subplot(1,1,1)
+    
+     # Set color Scheme
+    line_color = line
+    fig.set_facecolor(background)
+
+    # Set dimensions Instat
+    if provider == "Instat":
+        width = 52.5
+        length = 68
+        pen_area_y = width-16.5
+        pen_area_x = 13.85
+        pen_area_x2 = 54.15
+        six_yard_y = width-5.5
+        six_yard_x = 24.85
+        six_yard_x2 = 43.15
+        penalty_spot = [34,width-11]
+    else:
+        length = 60
+        width = 80
+        pen_area_x = 18
+        pen_area_y = 18
+        pen_area_y2 = 62
+        six_yard_x = 6
+        six_yard_y = 30
+        six_yard_y2 = 50
+        penalty_spot = [12,40]
+
+
+    # Pitch Outline & Centre Line
+    plt.plot([0,0],[0,width], color=line_color)
+    plt.plot([0,length],[width,width], color=line_color)
+    plt.plot([length,length],[width,0], color=line_color)
+    plt.plot([length,0],[0,0], color=line_color)
+
+    # Penalty Area
+    plt.plot([pen_area_x,pen_area_x], [width, pen_area_y], color=line_color)
+    plt.plot([pen_area_x,pen_area_x2], [pen_area_y,pen_area_y], color=line_color)
+    plt.plot([pen_area_x2,pen_area_x2], [width,pen_area_y], color=line_color)
+
+    # 6-yard Box
+    plt.plot([six_yard_x,six_yard_x], [width, six_yard_y], color=line_color)
+    plt.plot([six_yard_x,six_yard_x2], [six_yard_y,six_yard_y], color=line_color)
+    plt.plot([six_yard_x2,six_yard_x2], [width,six_yard_y], color=line_color)
+
+    # Penalty Spot
+    PenSpot = plt.Circle(penalty_spot,0.5, color=line_color)
+    ax.add_patch(PenSpot)
+
+    # Left Penalty Arc
+    penalty_arc = Arc(penalty_spot,height=18.3,width=18.3,angle=270,theta1=307,theta2=53, color=line_color)
+    ax.add_patch(penalty_arc)
+
+    #Prepare Circles
+    centreCircle = plt.Circle((length/2, 0),9.15,color=line_color, fill=False)
+    centreSpot = plt.Circle((length/2, 0),0.8,color=line_color)
+    ax.add_patch(centreCircle)
+    ax.add_patch(centreSpot)
+ 
+    #Tidy Axes
+    plt.axis('off')
+
+def squared_pitch():
     # Create figure
     fig=plt.figure()
     fig.set_size_inches(16, 9)
